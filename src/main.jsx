@@ -32,7 +32,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const router = createBrowserRouter([
-  { path: "", element: <HomePage /> },
+  { path: "/", element: <HomePage /> },
   { path: "login", element: (<OpenRoute> <LoginForm /> </OpenRoute> )},
   { path: "signup", element: <OpenRoute><SignUp /></OpenRoute> },
   { path: "verify-email/:actionParam", element: <OpenRoute><VerifyEmail /></OpenRoute> },
