@@ -30,10 +30,10 @@ import PrivateRoute from "./hooks/PrivateRoute";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
-
+const BASE_URL = "modern-mobiles-client.vercel.app"
 const router = createBrowserRouter([
-  { path: "", element: <HomePage /> },
-  { path: "login", element: (<OpenRoute> <LoginForm /> </OpenRoute> )},
+  { path: `${BASE_URL}/`, element: <HomePage /> },
+  { path: `${BASE_URL}/login`, element: (<OpenRoute> <LoginForm /> </OpenRoute> )},
   { path: "signup", element: <OpenRoute><SignUp /></OpenRoute> },
   { path: "verify-email/:actionParam", element: <OpenRoute><VerifyEmail /></OpenRoute> },
 
