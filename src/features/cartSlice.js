@@ -61,7 +61,7 @@ export const checkout = createAsyncThunk("posts/checkout", async ({ total, user,
         // open razorpay sdk
         const options = {
             
-            key: import.meta.env.VITE_RAZORPAY_KEY,
+            // key: import.meta.env.VITE_RAZORPAY_KEY,
             curreny: orderResponse.data.data.curreny,
             amount: orderResponse.data.data.amount,
             order_id: orderResponse.data.data.id,
