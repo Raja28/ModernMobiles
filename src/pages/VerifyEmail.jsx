@@ -26,7 +26,7 @@ export const VerifyEmail = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { actionParam } = useParams()
-    console.log("actionParam", actionParam);
+
 
 
     useEffect(() => {
@@ -38,11 +38,11 @@ export const VerifyEmail = () => {
         if (loading == false && status === "success") {
             // dispatch(resetAuth())
             if (actionParam === isSignup && !userData) {
-                // dispatch(resetAuth())
+                dispatch(resetAuth())
                 navigate("/login")
             } else {
+                
                 if (localStorage.getItem("token")) {
-                    console.log(userData);
                     
                     dispatch(setUser(userData))
                     navigate("/dashboard")
@@ -50,6 +50,15 @@ export const VerifyEmail = () => {
                 }
             }
         } else {
+
+            // if(loading === false && status === "success"){
+            //     console.log("navigate(/dashboard)")
+                
+            //     dispatch(setUser(userData))
+                
+            //     navigate("/dashboard")
+            //     return
+            // }
             if (loading == false && status === "error") {
                 dispatch(resetAuth())
                 navigate(-1)
@@ -73,11 +82,11 @@ export const VerifyEmail = () => {
         e.preventDefault();
         if (isSignup === actionParam) {
             const { firstName, lastName, email, contact } = userData
-            console.log(otp);
+
 
             let clonedObj = Object.assign({}, userData)
             clonedObj.otp = otp
-            console.log(clonedObj);
+
             dispatch(signupNewUser(clonedObj))
         } else {
             const email = userData
