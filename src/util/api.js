@@ -1,6 +1,5 @@
 // const BASEURL = "http://localhost:3000"
-// const BASEURL = "https://modern-mobiles-server.vercel.app"
-const BASEURL = "modern-mobiles.vercel.app"
+const BASEURL = "https://modern-mobiles-server.vercel.app"
 
 // images
 export const avatarAPI = "https://api.multiavatar.com/zoe.svg"
