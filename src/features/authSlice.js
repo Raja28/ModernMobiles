@@ -15,7 +15,7 @@ export const sendOTP = createAsyncThunk("posts/sendOTP", async (email, { rejectW
         toast.dismiss(toastId)
         toast.success("OTP Sent")
 
-        console.log(response.data.message);
+        // console.log(response.data.message);
         // return response.data.message;
     } catch (error) {
         toast.dismiss(toastId)
@@ -105,7 +105,7 @@ export const authSlice = createSlice({
         });
         builder.addCase(sendOTP.fulfilled, (state, { payload }) => {
             state.status = "success";
-            state.token = payload
+            // state.token = payload
             state.loading = false;
 
         });
@@ -123,7 +123,7 @@ export const authSlice = createSlice({
         builder.addCase(signupNewUser.fulfilled, (state) => {
             state.status = "success";
             state.loading = false;
-
+            state.userData = null
         });
         builder.addCase(signupNewUser.rejected, (state,) => {
             state.status = "error";
@@ -140,7 +140,7 @@ export const authSlice = createSlice({
             state.status = "success";
             state.loading = false;
             state.userData = payload
-            console.log(payload?.cart);
+            
             
             localStorage.setItem('cart', JSON.stringify(payload?.cart))
             let total = 0
