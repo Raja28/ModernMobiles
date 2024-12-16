@@ -120,7 +120,7 @@ function Carousel({ products }) {
 
             {
                 products.map(data => (
-                    <Link to={`/product-details/${data?._id}`} key={data._id}
+                    <Link to={`/product-details/${data.brand}/${data?._id}`} key={data._id}
                         className="card p-0 mb-4  text-decoration-none">
                         <img src={data?.imageGallery[0]?.original} className="card-img-top" alt="..." />
                         <div className="card-body d-flex flex-column">
