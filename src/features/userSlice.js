@@ -20,12 +20,10 @@ export const addProductToWhistlist = createAsyncThunk("posts/addProductToWhistli
       }
     }
     const response = await axios.post(ADD_WHISHLIST, data, tokenPayload)
-    // console.log(response.data);
 
     if (response?.data?.success) {
       toast.success("Added To Wishlist")
     }
-    // console.log(response.data.wishlist);
 
     return response?.data?.wishlist
   } catch (error) {
@@ -43,9 +41,6 @@ export const removeProductFromWishlist = createAsyncThunk("posts/removeProductFr
       }
     }
     const response = await axios.post(REMOVE_WHISHLIST, data);
-    // console.log(response);
-
-    // console.log(response?.data.data);
 
     if (response?.data?.success) {
       toast.success("Removed From Wishlist")
@@ -94,7 +89,7 @@ export const addUserAddress = createAsyncThunk("posts/addUserAddress", async (us
         "Authorization": `Bearer ${JSON.parse(localStorage.getItem("token"))}`
       }
     }
-    // const token = JSON.parse(localStorage.getItem("token"))
+
     const response = await axios.post(ADD_USER_ADDRESS, userAddress, tokenPayload)
 
     toast.dismiss(toastId);
@@ -119,7 +114,6 @@ export const deleteUserAddress = createAsyncThunk('posts/deleteUserAddress', asy
         "Authorization": `Bearer ${JSON.parse(localStorage.getItem("token"))}`
       }
     }
-    // const token = JSON.parse(localStorage.getItem("token"))
 
     const result = await axios.post(DELETE_USER_ADDRESS, { addressId }, tokenPayload)
 
@@ -152,8 +146,6 @@ export const updateUserAddress = createAsyncThunk("posts/updateUserAddress", asy
     if (result?.data?.success) {
       toast.success('Address Updated Successfully')
     }
-    // console.log(result.data?.address);
-
     return result?.data?.address
 
   } catch (error) {
@@ -172,12 +164,10 @@ export const addToCart = createAsyncThunk("posts/addToCart", async (productId, {
         "Authorization": `Bearer ${JSON.parse(localStorage.getItem("token"))}`
       }
     }
-
     const result = await axios.post(ADD_PRODUCT_TO_CART, productId, tokenPayload)
-    // console.log(result.data);
 
-    toast.dismiss(toastId);
     if (result?.data?.success) {
+      toast.dismiss(toastId);
       toast.success("Added To Cart")
     }
     return result?.data?.cart
@@ -193,7 +183,6 @@ export const addToCart = createAsyncThunk("posts/addToCart", async (productId, {
 
 export const removeFromCart = createAsyncThunk("posts/removeFromCart", async (cartModelId, { rejectWithValue }) => {
 
-  // const toastId = toast.loading("Please wait")
   try {
     const tokenPayload = {
       headers: {
@@ -201,16 +190,13 @@ export const removeFromCart = createAsyncThunk("posts/removeFromCart", async (ca
       }
     }
     const result = await axios.post(REMOVE_PRODUCT_FROM_CART, { cartModelId }, tokenPayload)
-    // toast.dismiss(toastId);
 
     if (result?.data?.success) {
       toast.success('Removed From Cart')
     }
-    console.log(result.data?.cart);
 
     return result?.data?.cart
   } catch (error) {
-    // toast.dismiss(toastId);
     console.log(error);
     toast.error(error?.response?.data?.message)
     return rejectWithValue(error?.response?.data?.message)
@@ -219,7 +205,6 @@ export const removeFromCart = createAsyncThunk("posts/removeFromCart", async (ca
 
 export const cartToWishlist = createAsyncThunk("posts/cartToWishlist", async (dataPayload, { rejectWithValue }) => {
 
-  // const toastId = toast.loading("Please wait")
   try {
     const tokenPayload = {
       headers: {
@@ -227,16 +212,13 @@ export const cartToWishlist = createAsyncThunk("posts/cartToWishlist", async (da
       }
     }
     const result = await axios.post(CART_TO_WISHLIST, dataPayload, tokenPayload)
-    // toast.dismiss(toastId);
 
     if (result?.data?.success) {
       toast.success('Added To Wishlist')
     }
-    // console.log(result.data);
 
     return result?.data
   } catch (error) {
-    // toast.dismiss(toastId);
     console.log(error);
     toast.error(error?.response?.data?.message)
     return rejectWithValue(error?.response?.data?.message)
@@ -256,19 +238,15 @@ export const wishlistToCart = createAsyncThunk("posts/wishlistToCart", async (pr
     if (result?.data?.success) {
       toast.success('Added To Cart')
     }
-    // console.log(result.data);
 
     return result?.data
   } catch (error) {
-    // toast.dismiss(toastId);
-    console.log(error);
     toast.error("Something Went Wrong")
     return rejectWithValue(error?.response?.data?.message)
   }
 })
 
 export const fetchOrders = createAsyncThunk('posts/fetchOrders', async (userId, { rejectWithValue }) => {
-  const toastId = toast.loading("Fetching Orders")
 
   try {
     const tokenPayload = {
@@ -278,19 +256,9 @@ export const fetchOrders = createAsyncThunk('posts/fetchOrders', async (userId, 
     }
 
     const response = await axios.get(FETCH_ORDERS_API, tokenPayload)
-    // console.log("FETCH_ORDERS_API......", response);
-
-    if (response?.data?.success) {
-      toast.dismiss(toastId);
-      toast.success(response?.data?.message)
-    }
-    // console.log(response?.data);
 
     return response?.data?.orders
   } catch (error) {
-    // console.log(error?.response);
-
-    toast.dismiss(toastId)
     toast.error(error?.response?.data?.message)
     return rejectWithValue(error?.response?.data?.message)
   }
@@ -303,7 +271,7 @@ const initialState = {
   orders: [],
   status: "idle",
   error: null,
-  token: localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : null
+  token: localStorage.getItem("token") ? localStorage.getItem("token") : null
 
 };
 
@@ -318,7 +286,7 @@ const userSlice = createSlice({
       state.token = payload
     },
     setUser: (state, { payload }) => {
-      // console.log(payload?.token);
+
       state.user = { ...payload }
       state.wishlist = [...payload.wishlist]
       state.token = payload?.token
@@ -328,7 +296,7 @@ const userSlice = createSlice({
       state.user.cart = payload || JSON.parse(localStorage.getItem("cart"))
     },
     setWhistlist: (state, { payload }) => {
-      // console.log(payload);
+
       state.wishlist = [...payload]
     },
 
@@ -350,12 +318,12 @@ const userSlice = createSlice({
     });
     builder.addCase(addProductToWhistlist.fulfilled, (state, { payload }) => {
       state.wishlist = [...payload]
-       state.status = "success"
-      // localStorage.setItem("products", JSON.stringify(payload))
+      state.status = "success"
+
     });
     builder.addCase(addProductToWhistlist.rejected, (state) => {
       state.status = "error"
-      // localStorage.setItem("products", JSON.stringify(payload))
+
     });
 
     builder.addCase(removeProductFromWishlist.pending, (state) => {
@@ -398,8 +366,6 @@ const userSlice = createSlice({
     });
     builder.addCase(deleteUserAddress.fulfilled, (state, { payload }) => {
       state.status = "success"
-      // console.log(payload);
-
       state.user.address = [...payload]
     });
     builder.addCase(deleteUserAddress.rejected, (state,) => {
@@ -492,11 +458,8 @@ const userSlice = createSlice({
       state.status = "loading"
     });
     builder.addCase(fetchOrders.fulfilled, (state, { payload }) => {
-
       state.status = "success"
-      // state.user.cart = []
       state.orders = payload
-      // localStorage.setItem("cart", [])
     });
     builder.addCase(fetchOrders.rejected, (state, { payload }) => {
 
