@@ -292,7 +292,6 @@ const userSlice = createSlice({
       state.token = payload?.token
     },
     setUserCart: (state, { payload }) => {
-      console.log("userCart payload", payload);
       state.user.cart = payload || JSON.parse(localStorage.getItem("cart"))
     },
     setWhistlist: (state, { payload }) => {
