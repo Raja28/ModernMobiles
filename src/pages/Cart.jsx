@@ -22,9 +22,9 @@ const decrease = -1
 
 function Cart() {
     const token = localStorage.getItem("token") ? localStorage.getItem("token") : null
-    const { user, status:userSliceStatus } = useSelector(state => state.user)
+    const { user, status: userSliceStatus } = useSelector(state => state.user)
     const { cartItems, total, status } = useSelector(state => state.cart)
-    
+
     let address
     if (user?.address) {
         address = user?.address
@@ -35,7 +35,7 @@ function Cart() {
 
     useEffect(() => {
         dispatch(setTotal())
-        // dispatch(setUserCart())
+
     }, [cartItems])
 
     useEffect(() => {
@@ -52,8 +52,6 @@ function Cart() {
     }, [status, total, cartItems])
 
     const [deliveryAddressId, setDeliveryAddessId] = useState()
-    // const [deliveryAddress, setDeliveryAddess] = useState("")
-
 
     function handlerProductQuantity(operationId, cartId) {
         let quantityDetails = {
@@ -140,27 +138,6 @@ function Cart() {
                                             )
 
                                             : (
-                                                // <select class="form-select form-select-lg " aria-label="Large select example">
-                                                //     {/* <option selected>Open this select menu</option> */}
-                                                //     {/* <option value="1">One</option>
-                                                //     <option value="2">Two</option>
-                                                //     <option value="3">Three</option> */}
-                                                //     {
-                                                //         address?.map((add, index) => (
-                                                //             <option value="">
-                                                //                 <div className="row">
-                                                //                     <div className="col">
-                                                //                         <p><strong>Deliver to: </strong>{add?.firstName} {add?.lastName} ({add?.contact})</p>
-                                                //                         <p>Phone: {add?.contact}</p>
-                                                //                     </div>
-
-                                                //                 </div>
-                                                //             </option>
-                                                //         ))
-                                                //     }
-
-                                                // </select>
-
                                                 cartItems?.length > 0 &&
                                                 <div className="accordion" id="accordionPanelsStayOpenExample" >
                                                     <div className="accordion-item" >
@@ -182,7 +159,6 @@ function Cart() {
                                                                                 type="radio"
                                                                                 value={add?._id}
                                                                                 name="address"
-                                                                                // disabled={status === "loading" ? true: false}
                                                                                 onClick={() => setDeliveryAddessId(add?._id)}
                                                                                 className="align-self-start mt-2 "
                                                                             />
@@ -200,8 +176,6 @@ function Cart() {
 
                                                     </div>
                                                 </div>
-
-
                                             )
                                     }
 
@@ -281,13 +255,13 @@ function Cart() {
                                                                 <button
                                                                     disabled={userSliceStatus === "loading" ? true : false}
                                                                     onClick={() => cartToWishlistHandler(product?.product?._id, product?._id)}
-                                                                    className="btn btn-warning" >
+                                                                    className="btn btn-sm btn-warning" >
                                                                     MOVE WISHLIST
                                                                 </button>
                                                                 <button
                                                                     disabled={userSliceStatus === "loading" ? true : false}
                                                                     onClick={(e) => handlerCart(e, product?.product._id, cartItems, dispatch)}
-                                                                    className="btn btn-danger">
+                                                                    className="btn btn-sm btn-danger">
                                                                     REMOVE FROM CART
                                                                 </button>
                                                             </div>
