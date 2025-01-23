@@ -35,16 +35,8 @@ const navCards = [
 
 export const Dashboard = () => {
 
-    // const myModal = document.getElementById('myModal')
-    // const myInput = document.getElementById('myInput')
-
-    // myModal.addEventListener('shown.bs.modal', () => {
-    //     myInput.focus()
-    // })
-
     const { user, status } = useSelector(state => state.user)
     const { firstName, lastName, email, contact, address } = user
-    // console.log(user)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -68,7 +60,6 @@ export const Dashboard = () => {
 
     function handlerOnSubmit() {
 
-        // console.log(formData);
         if (firstName === formData.firstName && lastName === formData.lastName && contact === formData.contact
             && email === formData.email
         ) {
@@ -87,9 +78,7 @@ export const Dashboard = () => {
     function handlerAddAddress(e) {
         e.preventDefault()
         console.log("naviahting to add address");
-
     }
-
 
     function handlerLogout() {
         dispatch(resetCart())
@@ -108,9 +97,9 @@ export const Dashboard = () => {
                     {/* Left */}
                     <div className="col-md-4 d-flex flex-column justify-content-between">
                         <div className="card ">
-                            {/* <div className="border " style={{maxWidth: "8rem", maxHeight: "8rem"}}> */}
+
                             <img src={avatarAPI} alt="user-avatar" className="card-img-top img-fluid w-50 h-50" />
-                            {/* </div> */}
+                           
                             <div className="card-body text-center">
                                 <h6 className="">{firstName + " " + lastName}</h6>
                                 <p>{email}</p>
@@ -152,16 +141,6 @@ export const Dashboard = () => {
                             Logout
                             <MdOutlineLogout className="mx-2" />
                         </button>
-
-                        {/* <button className={
-                            updateUserData ? "my-3 w-100 align-center p-2 text-light bg-danger fw-semibold"
-                                : "my-3 w-100 align-center p-2 text-dark fw-semibold"
-                        }
-
-                        >
-                            {updateUserData ? "Save" : "Edit"}
-                            <MdOutlineEditNote />
-                        </button> */}
                     </div>
 
 
@@ -275,11 +254,6 @@ export const Dashboard = () => {
 
                                 </div>
                             </div>
-
-
-
-                            {/* </div> */}
-                            {/* </form> */}
                         </div>
 
                         {/* cards */}

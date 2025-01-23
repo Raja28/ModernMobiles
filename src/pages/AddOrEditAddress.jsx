@@ -5,8 +5,6 @@ import Header from "../components/Header";
 
 export const AddressForm = () => {
 
-    // const { use } = useSelector(state => state.user);
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { addressId } = useParams()
@@ -42,10 +40,6 @@ export const AddressForm = () => {
                             placeholder="Last Name"
                             id="lastName" />
                     </div>
-                    {/* <div className="col-12">
-                        <label for="inputAddress" className="form-label">Address</label>
-                        <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
-                    </div> */}
                     <div className="col-12">
                         <label for="address" className="form-label">Address</label>
                         <input type="text"

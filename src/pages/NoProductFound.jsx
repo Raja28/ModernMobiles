@@ -8,19 +8,16 @@ import { useNavigate } from "react-router-dom";
 const image = "https://res.cloudinary.com/dooxbo8sg/image/upload/v1728919914/ModernMobiles/No_Product_Found/nproduct_ikdqud.png"
 
 export const NoProductFound = () => {
-    // console.log("in NoProduct");
     const { products } = useSelector(state => state.products)
     const navigate = useNavigate()
 
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(setProducts())
-        // dispatch(setStatus("idle"))
     }, [])
 
     function handlerGoBack() {
 
-        console.log(products?.length);
 
         if (products?.length > 0) {
             navigate(-1)

@@ -9,7 +9,6 @@ import { setStatus } from "../features/productSlice";
 import { useEffect } from "react";
 import { resetAuth } from "../features/authSlice";
 import useOnlineStatus from "../hooks/useConnectionStatus";
-// import { No_Internet_and_Wifi } from "../util/api";
 import No_Internet_and_Wifi from "../assets/Logo/No_Internet_and_Wifi.png"
 
 
@@ -17,7 +16,6 @@ export default function HomePage() {
   const { error, status } = useSelector(state => state.products)
   let userConnection = useOnlineStatus()
 
-  // console.log(error);
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -39,40 +37,13 @@ export default function HomePage() {
                 <h5>Connect to the Internet</h5>
                 <p className="text-secondary">You're offline. Check your connection.</p>
               </div>
-              {/* <div className="mt-3">
-                {
-                  userConnection ? (
-                    <p className="btn btn-outline-primary btn-lg">Home</p>
-                  ):(<p className="btn btn-outline-danger btn-lg">Refresh</p>)
-                }
-              </div> */}
+
             </div>
           </div>
         )
           : (
             <>
               <section className="container " style={{ marginTop: "5.3rem" }}>
-                {/* <div className="row">
-          { category.map((category) => (
-            <Link
-              key={category.id}
-              to={category.title}
-              className=" text-decoration-none my-1 m-2 p-0 img-hover-zoom"
-            >
-              <div className="col card border border-2">
-                <img
-                  src={category.thumbnail}
-                  className="img-fluid rounded img-responsive"
-                  style={{ maxHeight: "6rem", backgroundSize: "cover" }}
-                />
-              </div>
-              <div className="text-center fw-semibold text-secondary" id="demo">
-                {category.title}
-              </div>
-            </Link>
-          ))}
-        </div> */}
-
                 <div
                   className="d-flex justify-content-lg-between justify-content-evenly 
                            flex-wrap align-items-center gap-2 "
@@ -116,14 +87,11 @@ export default function HomePage() {
               </section>
 
               <section>
-                {/* src="https://images.samsung.com/is/image/samsung/assets/in/p6_gro2/olympic-update/im0106_home-explore-banner_pc_684x684_Q6B6.jpg?$684_684_PNG$" */}
-                {/* src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-50-compare-202309?wid=960&hei=1000&fmt=p-jpg&qlt=95&.v=1710800194983" */}
-                {/* src="https://i.shgcdn.com/3c5d9cda-0043-4e6b-b877-579f8e5e538c/-/format/auto/-/preview/3000x3000/-/quality/lighter/" */}
 
                 <div className="container d-flex flex-wrap flex-md-nowrap gap-2 my-4">
                   <div className="w-100  border-4 rounded">
                     <img
-                      // src="https://images.samsung.com/is/image/samsung/assets/in/p6_gro2/olympic-update/im0106_home-explore-banner_pc_684x684_Q6B6.jpg?$784_600_PNG$"
+
                       src="https://img.global.news.samsung.com/in/wp-content/uploads/2024/07/Samsung-Neeraj-Chopra.jpg"
                       width="100%"
                       height="100%"

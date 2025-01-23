@@ -8,22 +8,6 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import "../App.css"
 
-// function SampleNextArrow(props) {
-//     const { className, style, onClick } = props;
-//     return (
-//         <div
-//             className={className}
-//             style={{
-//                 ...style, display: "block", background: "grey", borderRadius: "50%",
-//                 transform: "translateX(-200%)", zIndex: "10", transform: "scale(1.5)",
-//                 position: 'absolute', right: ".5rem"
-//             }}
-//             onClick={onClick}
-//         />
-
-//     );
-// }
-
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -41,37 +25,9 @@ function SamplePrevArrow(props) {
     )
 }
 
-// function SamplePrevArrow(props) {
-//     const { className, style, onClick } = props;
-//     return (
-
-//         <div
-//             className={className}
-//             style={{
-//                 ...style, display: "block", background: "grey", borderRadius: "50%",
-//                 transform: "translateX(25px)", zIndex: "10", transform: "scale(1.5)",
-//                 position: 'absolute', left: ".5rem"
-
-//             }}
-//             onClick={onClick}
-//         // <FaRegCaretSquareLeft className="fs-3 " width={"20rem"} />
-//         />
-
-
-//     );
-// }
-
 function Carousel({ products }) {
-    // console.log(data);
-    // const settings = {
-    //     dots: true,
-    //     infinite: true,
-    //     speed: 500,
-    //     slidesToShow: 3,
-    //     slidesToScroll: 1,
-    //     nextArrow: <SampleNextArrow />,
-    //     prevArrow: <SamplePrevArrow />
-    // };
+    console.log(products);
+    
 
     const settings = {
         // dots: true,

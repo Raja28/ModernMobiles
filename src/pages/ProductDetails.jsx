@@ -38,7 +38,6 @@ export const ProductDetails = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  // const { status, products: data } = useSelector(state => state.products)
   const { status, products, productDetails } = useSelector(state => state.products)
   const { wishlist, user } = useSelector(state => state.user)
 
@@ -61,18 +60,8 @@ export const ProductDetails = () => {
 
     } else {
       dispatch(fetchData(brand))
-      // if (productDetails?._id !== productId) {
-      //   dispatch(setProductDetail())
-      //   dispatch(fetchProductById(productId))
-      //   return
-      // }
     }
 
-    // dispatch(fetchProductById(productId))
-    // if (status === "success" && Object.keys(productDetails).length === 0) {
-    //   navigate("/page_not_found")
-    //   return
-    // }
 
   }, [productId, products])
 
@@ -85,12 +74,6 @@ export const ProductDetails = () => {
     navigate("/error")
     return
   }
-
-  // if (status === "error") {
-  //   return (
-  //     <Error />
-  //   )
-  // }
 
   return (
     <div >
@@ -107,7 +90,7 @@ export const ProductDetails = () => {
             {/* right */}
             <div className="text-dark fw-semibold  p-1 " >
 
-              {/* <div>Brand:{" " + products.brand}</div> */}
+
               <div className="text-secondary">{productDetails?.brand?.split("").join(" ").toUpperCase()}</div>
               <p className="fs-4">{productDetails?.title}</p>
               <p className="fs-5 ">
@@ -134,27 +117,6 @@ export const ProductDetails = () => {
                   ))
                 }
               </div>
-
-
-              {/* <div className="row row-cols-1 row-cols-md-2 d-flex flex-wrap ">
-              {
-                Object.keys(imageLink).map(key => (
-                  <div className="col">
-                    <div key={key} className=" d-flex border border-secondary rounded align-items-center my-2 shadow"
-                      style={{ padding: "1px" }} >
-                      <img src={imageLink[key]} alt={key} className="object-fit-cover"
-                        style={{ maxWidth: "30%", maxHeight: "5rem" }} />
-                      <div className="card-body">
-                        <p className="m-0 card-title">{key.toUpperCase()}</p>
-                        <p className="m-0 card-text">{products.additionalInformation[key]}</p>
-                      </div>
-
-                    </div>
-                  </div>
-                ))}
-
-
-            </div> */}
 
               {/* SPECIFICATIONS */}
               <div>
@@ -267,7 +229,6 @@ export const ProductDetails = () => {
                           <div>{productDetails?.series}</div>
                         </div>
 
-
                       </div>
                     </div>
 
@@ -275,31 +236,6 @@ export const ProductDetails = () => {
                 </div>
               </div>
             </div>
-
-            {/* <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                Accordion Item #2
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-              <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                Accordion Item #3
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-              <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div> */}
           </div>
 
           {/* REVIEW */}
@@ -318,7 +254,7 @@ export const ProductDetails = () => {
           </div>
 
           {/* Carousel */}
-          <Carousel products={products} />
+          <Carousel products={JSON.parse(localStorage.getItem('products'))} />
 
         </div>
       }

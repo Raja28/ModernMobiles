@@ -37,7 +37,6 @@ const router = createBrowserRouter([
   { path: "signup", element: <OpenRoute><SignUp /></OpenRoute> },
   { path: "verify-email/:actionParam", element: <OpenRoute><VerifyEmail /></OpenRoute> },
 
-  // { path: "cart/", element: <Cart /> },
   { path: "dashboard/wishlist/", element: (<WhistList />) },
   { path: "dashboard/my-profile", element: <PrivateRoute><Dashboard /></PrivateRoute> },
 

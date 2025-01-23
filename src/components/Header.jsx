@@ -43,7 +43,6 @@ export default function Header() {
     <header className="">
       <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom 5">
         <div className="container-lg">
-          {/* <div className=""> */}
 
           <Link
             to={"/"}
@@ -61,7 +60,7 @@ export default function Header() {
             className="form-group has-search border border-info rounded d-flex search-box bg-light"
             style={{ maxWidth: "30%" }}>
 
-            <span className="bi bi-search form-control-feedback bg-white rounded"></span>
+            <span className="bi bi-search form-control-feedback bg-white rounded h-100"></span>
             <input
               type="text"
               name="searchInput"
@@ -93,9 +92,6 @@ export default function Header() {
             aria-labelledby="offcanvasNavbarLabel"
           >
             <div className="offcanvas-header">
-              {/* <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">
-                Dark offcanvas
-              </h5> */}
               <Link
                 to={"/"}
                 className="navbar-brand text-secondary p-0 fw-semibold"
@@ -149,7 +145,7 @@ export default function Header() {
                       id="whistlist-count"
                     >
                       {wishlist?.length}
-                      {/* <span class="visually-hidden">unread messages</span> */}
+                     
                     </span>
                   </div>
 
@@ -188,7 +184,7 @@ export default function Header() {
 
               <div className="sidebar_nav">
                 {width <= 625 && userSelectedBrand && <Sidebar />}
-                {/* <Sidebar /> */}
+                
               </div>
             </div>
           </div>

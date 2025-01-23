@@ -16,8 +16,6 @@ export const SignUp = () => {
     lastName: "",
     email: "",
     contact: ""
-    // password: "",
-    // confirmPassword: "",
   });
 
 
@@ -70,7 +68,6 @@ export const SignUp = () => {
     }
 
   }
-  // const loginImage = "https://res.cloudinary.com/dooxbo8sg/image/upload/v1728759173/ModernMobiles/Login/e-com_login_cwjsza.jpg"
 
   if (loading === true && status == "processing") {
     return <Loading />
@@ -131,10 +128,10 @@ export const SignUp = () => {
                     />
                   </div>
                 </div>
-                {/* <br /> */}
+     
 
                 <label className="form-label mt-2" >Email: </label>
-                {/* <br /> */}
+
                 <input
                   type="text"
                   name="email"
@@ -143,7 +140,6 @@ export const SignUp = () => {
                   className="form-control"
                   onChange={(e) => onChangeHandler(e)}
                 />
-                {/* <br /> */}
 
                 <label htmlFor="contact" className="mt-2">Phone:</label>
                 <br />
@@ -157,14 +153,6 @@ export const SignUp = () => {
                   />
 
                 </div>
-
-                {/* <div className="d-flex justify-content-between">
-                  <span className="text-danger"></span>
-                  <Link to={"/login"} className="text-decoration-none text-secondary ">
-                    Go to Login
-                    <div className="bg-secondary opacity-50" style={{ height: "1px" }}></div>
-                  </Link>
-                </div> */}
                 <br />
 
                 <div className=" d-flex flex-column align-items-center">
@@ -185,156 +173,5 @@ export const SignUp = () => {
       </main >
       <Footer />
     </>
-    // <>
-    //   <Header />
-    //   <main>
-    //     <div className="d-flex align-items-center flex-lg-nowrap gap-2 container p-0 vh-100 mt-3" >
-
-    //       {/*Left */}
-    //       <section className="w-100  border" >
-    //         <div className="h-100 w-100" style={{maxHeight: "60vh"}}>
-    //           <img 
-    //           src="https://res.cloudinary.com/dooxbo8sg/image/upload/v1729620475/ModernMobiles/Login/sign-up.jpg"
-    //           // src="https://cdni.iconscout.com/illustration/premium/thumb/sign-up-illustration-download-in-svg-png-gif-file-formats--login-enter-log-cyber-protection-nallow-pack-people-illustrations-6983270.png?f=webp"
-    //             alt="signup-image"  className=" " style={{maxHeight: ""}}/>
-    //         </div>
-    //       </section>
-
-
-    //       {/*Right  */}
-    //       <section className="  w-100">
-    //         <div
-    //           className="d-flex flex-column align-items-center justify-content-center border">
-    //           <h2 className="mt-3" >Signup</h2>
-
-    //           <form
-    //             className="rounded p-3 "
-    //             onSubmit={onSubmitHandler}
-    //           >
-    //             <label className="form-label">First Name: </label>
-    //             <br />
-    //             <input
-    //               type="text"
-    //               name="firstName"
-    //               value={firstName}
-    //               placeholder="First Name"
-    //               className="form-control"
-    //               onChange={(e) => onChangeHandler(e)}
-    //             />
-    //             <br />
-
-    //             <label className="form-label">Last Name: </label>
-    //             <br />
-    //             <input
-    //               type="text"
-    //               name="lastName"
-    //               value={lastName}
-    //               placeholder="Last Name"
-    //               className="form-control"
-    //               onChange={(e) => onChangeHandler(e)}
-    //             />
-    //             <br />
-
-    //             <label className="form-label">Email: </label>
-    //             <br />
-    //             <input
-    //               type="text"
-    //               name="email"
-    //               value={email}
-    //               placeholder="Email"
-    //               className="form-control"
-    //               onChange={(e) => onChangeHandler(e)}
-    //             />
-    //             <br />
-
-    //             {/* <label className="form-label">Password: </label>
-    //           <br />
-    //           <div className=" d-flex justify-content-end align-items-center position-relative">
-    //             <input
-    //               type={showPassword ? "text" : "password"}
-    //               name="password"
-    //               placeholder="Password"
-    //               className="form-control"
-    //               onChange={(e) => onChangeHandler(e)}
-    //             />
-    //             <span
-    //               onClick={() => setShowPassword((prev) => !prev)}
-    //               style={{ transform: "translateX(-.8rem)" }}
-    //               className="position-absolute "
-    //             >
-    //               {showPassword ? (
-    //                 <AiOutlineEyeInvisible fontSize={20} />
-    //               ) : (
-    //                 <AiOutlineEye fontSize={20} />
-    //               )}
-    //             </span>
-    //           </div>
-    //           <br />
-
-    //           <label className="form-label">Confirm Password: </label>
-    //           <br />
-    //           <div className=" d-flex justify-content-end align-items-center position-relative">
-    //             <input
-    //               type={showConfirmPassword ? "text" : "password"}
-    //               name="confirmPassword"
-    //               placeholder="Confirm Password"
-    //               className="form-control"
-    //               onChange={(e) => onChangeHandler(e)}
-    //             />
-    //             <span
-    //               onClick={() => setShowConfirmPassword((prev) => !prev)}
-    //               style={{ transform: "translateX(-.8rem)" }}
-    //               className="position-absolute "
-    //             >
-    //               {showConfirmPassword ? (
-    //                 <AiOutlineEyeInvisible fontSize={20} />
-    //               ) : (
-    //                 <AiOutlineEye fontSize={20} />
-    //               )}
-    //             </span>
-    //           </div> */}
-
-    //             <label htmlFor="contact">Phone:</label>
-    //             <br />
-    //             <div className=" d-flex justify-content-end align-items-center position-relative">
-    //               <input
-    //                 type="text"
-    //                 name="contact"
-    //                 placeholder="Phone number"
-    //                 className="form-control"
-    //                 onChange={(e) => onChangeHandler(e)}
-    //               />
-    //               {/* <span
-    //               onClick={() => setShowConfirmPassword((prev) => !prev)}
-    //               style={{ transform: "translateX(-.8rem)" }}
-    //               className="position-absolute "
-    //             >
-    //               {showConfirmPassword ? (
-    //                 <AiOutlineEyeInvisible fontSize={20} />
-    //               ) : (
-    //                 <AiOutlineEye fontSize={20} />
-    //               )}
-    //             </span> */}
-    //             </div>
-
-    //             <div className="d-flex justify-content-between">
-    //               <span className="text-danger"></span>
-    //               <Link to={"/login-form"} className="text-decoration-none">
-    //                 Go to Login
-    //               </Link>
-    //             </div>
-    //             <br />
-
-    //             <button type="submit" className="btn btn-primary">
-    //               Submit
-    //             </button>
-    //           </form>
-    //         </div>
-    //       </section>
-
-    //     </div>
-    //   </main>
-    //   <Footer />
-    // </>
   );
 };

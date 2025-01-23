@@ -30,13 +30,11 @@ export const VerifyEmail = () => {
 
 
     useEffect(() => {
-        // dispatch(setLoading(false));
         dispatch(setStatus("idle"))
     }, [])
 
     useEffect(() => {
         if (loading == false && status === "success") {
-            // dispatch(resetAuth())
             if (actionParam === isSignup && !userData) {
                 dispatch(resetAuth())
                 navigate("/login")
@@ -51,14 +49,6 @@ export const VerifyEmail = () => {
             }
         } else {
 
-            // if(loading === false && status === "success"){
-            //     console.log("navigate(/dashboard)")
-                
-            //     dispatch(setUser(userData))
-                
-            //     navigate("/dashboard")
-            //     return
-            // }
             if (loading == false && status === "error") {
                 dispatch(resetAuth())
                 navigate(-1)
@@ -118,11 +108,11 @@ export const VerifyEmail = () => {
 
             {<div className='border d-flex justify-content-center align-items-center' style={{ marginTop: "5rem", minHeight: "calc(100vh - 5rem)" }}>
                 <div className='d-flex text-center flex-column align-items-center justify-content-center border p-1' style={{ maxWidth: "20.5rem", height: "fit-content" }} >
-                    {/* <div> */}
+ 
                     <h2>Verify Email</h2>
                     <p className=''>A verification code has been sent to you on  
                         <span className='text-primary'>{ actionParam === isLogin ? " "+userData:" "+userData.email}</span>. Enter the code below.</p>
-                    {/* </div> */}
+    
                     <form onSubmit={handlerVerifyEmail} className=''>
                         <OtpInput
                             value={otp}

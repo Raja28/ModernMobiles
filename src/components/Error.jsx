@@ -9,10 +9,6 @@ export const Error = () => {
     const { error } = useSelector(state => state.products)
     console.log(error);
     const dispatch = useDispatch()
-
-    // useEffect(()=>{
-    //     dispatch(setStatus("idle"))
-    // },[])
     
     return (
         <>

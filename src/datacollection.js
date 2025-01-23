@@ -11,51 +11,51 @@ export const category = [
     id: 1,
     brandName: "Apple",
     title: "Apple",
-    // thumbnail: "https://rb.gy/4ardrt",
-    // thumbnail: "https://cl.gy/gVCmD",
-    // thumbnail: "https://shorturl.at/XXm2o",
     thumbnail: "http://tiny.cc/zb3hzz",
-    // thumbnail: "https://img.icons8.com/?size=100&id=znhErJWkRjHW&format=gif",
+
   },
   {
     id: 2,
     brandName: "Motorola",
     title: "Motorola",
-    // thumbnail: "https://rb.gy/fo5l00",
-    // thumbnail: "https://cl.gy/jVSuR",
+
     thumbnail: "http://tiny.cc/1c3hzz",
   },
   {
     id: 3,
     brandName: "Samsung",
     title: "Samsung",
-    // thumbnail: "https://cl.gy/aehGE",
+
     thumbnail: "http://tiny.cc/sam-sung",
   },
   {
     id: 4,
     brandName: "Google",
     title: "Pixel",
-    // thumbnail: "https://rb.gy/2zrqi4",
-    // thumbnail: "https://cl.gy/tScxq",
+
     thumbnail: "https://rb.gy/zqv00f",
   },
   {
     id: 5,
     brandName: "OnePlus",
     title: "OnePlus",
-    // thumbnail: "https://rb.gy/qkpy6d",
-    // thumbnail: "https://cl.gy/aoMNC",
+
     thumbnail: "http://tiny.cc/one_plus",
   },
   {
     id: 6,
     brandName: "Nothing",
     title: "Nothing",
-    // thumbnail: "https://rb.gy/qkpy6d",
-    // thumbnail: "https://cl.gy/Oifrh",
+
     thumbnail: "https://rb.gy/i628yi",
   },
+  {
+    id: 7,
+    brandName: "browse-mobiles",
+    title: "View All",
+
+    thumbnail: "https://res.cloudinary.com/dooxbo8sg/image/upload/v1737626047/ModernMobiles/Others/mobile_collection.png",
+  }
 ];
 
 // https://github.com/pbakondy/ios-device-list/blob/master/iphone.json

@@ -9,14 +9,10 @@ import axios from "axios";
 export const sendOTP = createAsyncThunk("posts/sendOTP", async (email, { rejectWithValue }) => {
     let toastId = toast.loading("Sending OTP")
     try {
-        // console.log(email);
-
         const response = await axios.post(SENDOTP_API, { email });
         toast.dismiss(toastId)
         toast.success("OTP Sent")
 
-        // console.log(response.data.message);
-        // return response.data.message;
     } catch (error) {
         toast.dismiss(toastId)
         toast.error("Unable to Send OTP, Try again")
@@ -44,24 +40,20 @@ export const signupNewUser = createAsyncThunk("posts/signup", async (formData, {
 })
 
 export const loginUser = createAsyncThunk("posts/loginUser", async (formData, { rejectWithValue }) => {
-    // console.log(formData);
 
     let toastId = toast.loading("Verifying user")
     try {
-        const response = await axios.post(LOGIN_API, formData, )
+        const response = await axios.post(LOGIN_API, formData,)
         toast.dismiss(toastId)
         toast.success("Login Successful")
         localStorage.setItem("token", JSON.stringify(response.data.token))
-        // console.log(response.data);
 
         return response.data.user
 
     } catch (error) {
         toast.error(error.response.data.message)
-        // console.log(error);
         toast.dismiss(toastId)
         return rejectWithValue(error.response.data.message)
-
     }
 })
 
@@ -88,8 +80,8 @@ export const authSlice = createSlice({
         },
         resetAuth: (state) => {
             state.userData = null,
-            state.loading = false,
-            state.status = "idle"
+                state.loading = false,
+                state.status = "idle"
 
         }
     },
@@ -105,7 +97,6 @@ export const authSlice = createSlice({
         });
         builder.addCase(sendOTP.fulfilled, (state, { payload }) => {
             state.status = "success";
-            // state.token = payload
             state.loading = false;
 
         });
@@ -140,15 +131,15 @@ export const authSlice = createSlice({
             state.status = "success";
             state.loading = false;
             state.userData = payload
-            
-            
+
+
             localStorage.setItem('cart', JSON.stringify(payload?.cart))
             let total = 0
-            payload?.cart?.map(product=> {
+            payload?.cart?.map(product => {
                 total += product?.price
             })
             localStorage.setItem("total", JSON.stringify(total))
-            
+
         });
         builder.addCase(loginUser.rejected, (state, { payload }) => {
             state.status = "error";

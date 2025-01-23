@@ -19,7 +19,6 @@ export const LoginForm = () => {
   
   
   useEffect(() => {
-    // dispatch(setLoading(false));
     
     dispatch(setStatus("idle"))
   }, [])
@@ -27,7 +26,6 @@ export const LoginForm = () => {
   useEffect(() => {
     if (status == "success" && loading == false) {
       navigate("/verify-email/login")
-      // navigate("/verify-email/signup")
     }
   }, [status, loading])
 
@@ -56,67 +54,6 @@ export const LoginForm = () => {
   if (loading === true && status == "processing") {
     return <Loading />
   }
-
-  // return (
-  //   <>
-  //     <Header />
-  //     <main>
-  //       <div
-  //         style={{
-  //           backgroundImage: `url(${login_background_Image})`,
-  //           height: "100vh",
-  //           backgroundAttachment: "fixed",
-  //         }}
-  //         className="d-flex flex-column align-items-center "
-  //       >
-  //         <h2 className="mt-4">LOGIN</h2>
-
-  //         <form
-  //           onSubmit={(e) => onSubmitHandler(e)}
-  //           className="mt-4 border border-2 rounded p-3 form-css bg-light"
-  //         >
-  //           <label htmlFor="email" className="form-label">
-  //             Email:
-  //           </label>
-  //           <br />
-  //           <input
-  //             type="text"
-  //             name="email"
-  //             placeholder="@gmail.com"
-  //             className="form-control"
-  //             onChange={(e) => onChangeHandler(e)}
-  //           />
-  //           <br />
-  //           {/* <br /> */}
-  //           <label htmlFor="password" className="form-label">
-  //             Password:
-  //           </label>
-  //           <br />
-  //           <input
-  //             type="text"
-  //             name="password"
-  //             placeholder="Password"
-  //             className="form-control"
-  //             onChange={(e) => onChangeHandler(e)}
-  //           />
-  //           <div className="d-flex justify-content-between">
-  //             <span>msg</span>
-  //             <Link to={"/signup-form"} className="text-decoration-none fs-7">
-  //               Go to Signup
-  //             </Link>
-  //           </div>
-
-  //           <br />
-  //           <div className="d-flex justify-content-center">
-  //             <button type="submit" className="btn btn-primary ">
-  //               Submit
-  //             </button>
-  //           </div>
-  //         </form>
-  //       </div>
-  //     </main>
-  //   </>
-  // );
 
   return (
     <>

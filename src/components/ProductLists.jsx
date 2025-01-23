@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
 import { useState, useEffect } from "react";
-// import { iphone } from "../dataCollection";
 import { FcLikePlaceholder } from "react-icons/fc";
 import { GoHeartFill } from "react-icons/go";
 import { FaRegHeart } from "react-icons/fa";
@@ -10,7 +9,6 @@ import { FaShoppingBag } from "react-icons/fa";
 import { FaStar, FaIndianRupeeSign } from "react-icons/fa6";
 import { TiTickOutline } from "react-icons/ti";
 import { iphone } from "../datacollection";
-// import { Sidebar } from "./Sidebar";
 import { Sidebar } from "./Sidebar";
 import { Link } from "react-router-dom";
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
@@ -28,22 +26,7 @@ import { setCart } from "../features/cartSlice";
 
 let brands = ["Apple", "Pixel", "Samsung", "Nothing", "OnePlus", "Motorola"]
 
-// function validateBrandName(userSelectedBrand) {
-
-//   if (brands.includes(userSelectedBrand)) {
-//     return userSelectedBrand
-//   } else {
-//     let brand = brands.filter(brand => brand.toLocaleLowerCase() === userSelectedBrand.toLocaleLowerCase())
-
-//     if (!brand) {
-
-//       return false
-//     } else {
-//       return brand[0]
-//     }
-//   }
-// }
-
+const sideBarEnableWith = 625
 export default function ProductListPage() {
 
   let { userSelectedBrand } = useParams();
@@ -66,12 +49,12 @@ export default function ProductListPage() {
 
     if (products.length === 0 || (products?.length > 0 && userSelectedBrand !== products[0]?.brand)) {
 
-     
+
       dispatch(fetchData(userSelectedBrand))
     } else {
       dispatch(setProducts())
     }
-    
+
 
   }, [userSelectedBrand])
 
@@ -89,17 +72,15 @@ export default function ProductListPage() {
     return <Loading />
   }
 
-
   return (
     <>
       <Header />
       {products.length > 0 && <main style={{ marginTop: "5.5rem" }} className="">
         <div className="d-flex  gap-2 mt-2 mx-2 ">
-          {/*  */}
           {/* filter-section (Left)*/}
           <div className="sidebar_productlist_page">
             {/* <Sidebar /> */}
-            {width > 625 && <Sidebar />}
+            {width > sideBarEnableWith && <Sidebar />}
           </div>
 
           {/* productList-section (Right) bg-light-grey*/}
@@ -121,7 +102,7 @@ export default function ProductListPage() {
 
                       className="card border-0 my-3 box-shadow border"
                       key={phone._id}
-                    // onClick={(e) => handlerFetchProductDetail(phone)}
+
                     >
                       <div className="row g-0 gap-2 ">
                         {/* Product-img (left)*/}
@@ -135,24 +116,23 @@ export default function ProductListPage() {
                           </button>
                           <Link
                             to={`/product-details/${phone?.brand}/${phone?._id}`}
-                            className="text-decoration-none "
+                            className="text-decoration-none"
                           >
                             {/* <div> */}
                             <img
                               src={phone["imageGallery"][0]?.original}
-                              // src={phone.imageURLLarge}
                               className="img-fluid img-thumbnail border-0"
 
                             />
                           </Link>
-                          {/* </div> */}
+
                         </div>
                         {/* Right */}
                         <div className="col-md-6 container ">
                           <div>
                             <Link
                               to={`/product-details/${phone?.brand}/${phone?._id}`}
-                              // onClick={() => handlerFetchProductDetail(phone._id)}
+
 
                               className="text-decoration-none "
 
@@ -235,7 +215,7 @@ export default function ProductListPage() {
                 </div>
               </div>
             </div>
-            {/* <div className="col"></div>*/}
+
           </div>
           {/*  */}
         </div>

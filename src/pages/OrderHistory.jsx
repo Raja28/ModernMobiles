@@ -7,6 +7,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import Header from "../components/Header"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
+import { LiaRupeeSignSolid } from "react-icons/lia";
 
 export function OrderHistory() {
     const { status, orders, user } = useSelector(state => state.user)
@@ -32,7 +33,7 @@ export function OrderHistory() {
     function handlerFetchProductDetail(product) {
         navigate(`/product-details/${product?.brand}/${product._id}`)
     }
-  
+
 
     return (
         <>
@@ -45,80 +46,69 @@ export function OrderHistory() {
 
                 <div className="text-center ">
                     <h2 className="m-0">Orders History</h2>
-                    {/* <span>{whistList?.length} items</span> */}
                     <span className="">{orders?.length ? orders?.length : 0} items</span>
                 </div>
                 <div>
-
-
-                    {/* row row-cols-1 row-cols-md-3 row-cols-sm-1 g-4 */}
-                    <div  className="row row-cols-1 row-cols-md-3 gap-2 mt-2 m-0">
+                 
+                    <div >
                         {
                             orders && orders.map((order, index) => (
-                                // {
-                                    order.cartId.map((cart, index) => (
-                                        <div key={cart?._id}
-                                            className="col-md-4 col-lg-3 my-3 mx-auto text-decoration-none p-0 card"
-                                            style={{ maxWidth: "18rem", cursor: "pointer" }}
-                                            onClick={() => handlerFetchProductDetail(cart?.product)}
-                                        >
-                                            {/* <div className="col-md-4 col-lg-3 my-3 mx-auto text-decoration-none p-0 card"> */}
-                                            <div className=" p-0">
 
+                                order.cartId.map((cart, index) => (
+
+                                    <div
+                                        key={cart?._id}
+                                        className="card mb-3 mt-5">
+                                        <div className=" row g-0">
+                                            <div className="col-md-3">
                                                 <img src={`${cart?.product?.imageGallery[0]?.original}`}
-                                                    className="w-100 rounded img-fluid img-thumbnail border-0" alt="product-image"
+
+                                                    className="rounded img-fluid img-thumbnail border-0" alt="product-image"
                                                 />
                                             </div>
-                                            <div className="card-body p-2 text-center">
-                                                <h6 className="card-title">{cart?.product?.title}</h6>
-                                                <div className="d-flex justify-content-between px-2">
-                                                    <strong>Quantity</strong>
-                                                    <p className="m-0 ">{cart?.quantity}</p>
-                                                </div>
-                                                <div className="d-flex justify-content-between px-2">
-                                                    <strong>Price</strong>
-                                                    <p className="m-0">{cart?.product?.price}</p>
-                                                </div>
-                                                <div className="d-flex justify-content-between px-2">
-                                                    <strong>Date</strong>
-                                                    <p className="m-0">{order?.createdAt.split("T")[0].split("-").reverse().join("-")}</p>
+                                            <div className="col-md-8">
+                                                <div className="card-body p-2">
+                                                    <h5 className="card-title">{cart?.product?.title}</h5>
+                                                    <div className="d-flex gap-2 mt-4">
+                                                        <strong>Series:</strong>
+                                                        <p className="m-0 "> {cart?.product?.series}</p>
+                                                    </div>
+
+                                                    <div className="d-flex gap-2 my-2">
+                                                        <strong>Quantity:</strong>
+                                                        <p className="m-0 "> {cart?.quantity}</p>
+                                                    </div>
+                                                    <div className="d-flex align-items-center gap-2 my-2">
+                                                        <strong>Price:</strong>
+                                                        <p className="m-0 ">Rs {cart?.product?.price} /-</p>
+                                                    </div>
+                                                    <div className="d-flex gap-2 my-2">
+                                                        <strong>Date:</strong>
+                                                        <p className="m-0">{order?.createdAt.split("T")[0].split("-").reverse().join("-")}</p>
+                                                    </div>
+                                                    <div className="d-flex gap-2 my-2">
+                                                        <strong>Delivery cost:</strong>
+                                                        <p className="m-0 "> {cart?.product?.deliveryCost}</p>
+                                                    </div>
+                                                    <div className="my-4">
+                                                        <Link
+                                                            to={`/product-details/${cart?.product?.brand}/${cart?.product?._id}`}
+                                                            className="text-decoration-none btn btn-sm btn-warning">
+
+                                                            View Details
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            {/* </div> */}
                                         </div>
-                                    ))
-                                // }
+                                    </div>
+
+                                ))
+
                             ))
                         }
                     </div>
                 </div>
-                {/* <div class="col">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="..." />
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a short card.</p>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                    </div> */}
 
             </main>
         </>

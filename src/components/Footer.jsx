@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <div className="bg-dark mt-3">
-      {/*  */}
+    
       <div className="container text-light d-flex justify-content-between py-5">
         {/* left-part */}
         <div className="d-flex flex-wrap gap-5">
@@ -10,7 +10,7 @@ export default function Footer() {
             <span>Contact us</span>
             <span>Device recycling</span>
           </div>
-          {/*  */}
+      
           <div className="d-flex flex-column gap-3">
             <span>Privacy</span>
             <span>Sales Terms</span>

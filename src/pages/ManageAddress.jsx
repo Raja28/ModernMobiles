@@ -13,15 +13,10 @@ export const ManageAddress = () => {
     const dispatch = useDispatch()
 
     const { address: originalAddress } = user
-    // console.log(originalAddress);
-
 
     const [editAddress, setEditAddress] = useState(false);
     const [editBtnIdentifyNum, setEditBtnIdentifierNum] = useState("");
     const [addressIndex, setAddressIndex] = useState(-1)
-    // console.log("editBtnIdentifier", editBtnIdentifier);
-
-
 
     const [userAddress, setUserAddress] = useState({
         firstName: "",
@@ -36,14 +31,11 @@ export const ManageAddress = () => {
 
     function handlerOnChange(e) {
         const { name, value } = e.target
-        // console.log(name, value);
 
         setUserAddress(prev => ({
             ...prev,
             [name]: value
         }))
-
-
     }
 
 
@@ -52,7 +44,7 @@ export const ManageAddress = () => {
         setEditAddress(prev => !prev)
 
         if (!editAddress) {
-            // console.log("editAddress", !editAddress);
+
             setEditBtnIdentifierNum(addressId)
             const addressIdx = originalAddress.findIndex(add => add._id === addressId)
             setAddressIndex(addressIdx)
@@ -99,7 +91,7 @@ export const ManageAddress = () => {
             // add new addresss
             if (!userAddress.firstName || !userAddress.lastName || !userAddress.contact ||
                 !userAddress.city || !userAddress.pinCode || !userAddress.address || !userAddress.state
-            ){
+            ) {
                 toast.error("All Fields Required")
                 return
             }
@@ -120,12 +112,7 @@ export const ManageAddress = () => {
         setEditBtnIdentifierNum("")
     }
 
-    // function handlerCancelEdit() {
-
-    // }
-
     function handlerDeleteAddress(addressId) {
-        // console.log(addressId);
         dispatch(deleteUserAddress(addressId))
 
     }
@@ -213,7 +200,6 @@ export const ManageAddress = () => {
 
                     {/* right */}
                     <div className="w-100" style={{ minWidth: "50%", height: "100%" }}>
-                        {/* <h4 className="text-center mt-3">Address Form</h4> */}
                         <div className="card
                          border mx-auto  " style={{ minWidth: "90%", minHeight: "85%" }}>
                             <div className="card-body  p-0">
@@ -277,10 +263,6 @@ export const ManageAddress = () => {
                                         </div>
                                     </div>
                                 </div>
-                                {/* <div class="form-group">
-                                <label for="inputAddress2">Address 2</label>
-                                 <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
-                               </div> */}
                                 <div className="d-flex gap-2">
 
                                     <div className="">

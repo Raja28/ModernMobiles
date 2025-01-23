@@ -13,10 +13,8 @@ const radioButtonString = [
 
 export const Sidebar = () => {
 
-  // const [priceRange, setPriceRange] = useState(150000);
   const { userSelectedBrand } = useParams();
   const navigate = useNavigate()
-  // const endPoint = `/${userSelectedBrand}`
 
   const [filter, setFilter] = useState({
     priceRange: 60000,
@@ -41,7 +39,6 @@ export const Sidebar = () => {
 
   function onChangeFilterHandler(e) {
     const { name, value, checked } = e.target;
-    // console.log(name, value);
 
     if (name === "category") {
       if (checked) {
@@ -63,22 +60,8 @@ export const Sidebar = () => {
       ...prev,
       [name]: value,
     }));
-    // console.log(filter);
 
   }
-
-  // function clearFilterHandler() {
-  //   setFilter(
-  //     {
-  //       priceRange: 150000,
-  //       category: [],
-  //       rating: "",
-  //       sortBy: "",
-  //     }
-  //   )
-
-  //   window.location.reload()
-  // }
 
 
   function handlerOnSubmit(e) {
@@ -112,7 +95,6 @@ export const Sidebar = () => {
                 min={10000}
                 max={60000}
                 step={10000}
-                // defaultValue={150000}
                 id="formControlRange"
                 name="priceRange"
                 value={filter.priceRange}
@@ -218,9 +200,6 @@ export const Sidebar = () => {
               </div>
             </div>
           </div>
-          {/* <button className="btn btn-primary mt-2 float-end" type="submit">
-            Apply
-          </button> */}
         </form>
       </div>
     </div>
