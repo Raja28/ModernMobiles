@@ -1,8 +1,9 @@
-// const BASEURL = "http://localhost:3000"
-const BASEURL = "https://modern-mobiles-server.vercel.app"
+const BASEURL = "http://localhost:3000"
+// const BASEURL = "https://modern-mobiles-server.vercel.app"
 
 // images
-export const avatarAPI = "https://api.multiavatar.com/zoe.svg"
+// export const avatarAPI = "https://api.multiavatar.com/zoe.svg"
+export const avatarAPI = "https://res.cloudinary.com/dooxbo8sg/image/upload/v1741110728/ModernMobiles/Others/zoeAvatar_vmcfep.png"
 export const logoutIcon = "https://res.cloudinary.com/dooxbo8sg/image/upload/v1730870045/ModernMobiles/Others/logout.gif"
 export const deliveryMan = "https://res.cloudinary.com/dooxbo8sg/image/upload/v1730985280/ModernMobiles/Others/delivery-man.jpg"
 export const emptyCart = "https://res.cloudinary.com/dooxbo8sg/image/upload/v1729578148/ModernMobiles/Others/empty-cart.gif"
