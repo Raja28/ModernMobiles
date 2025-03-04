@@ -57,10 +57,10 @@ export default function Header() {
           </Link>
 
           <div
-            className="form-group has-search border border-info rounded d-flex search-box bg-light"
+            className="form-group has-search border border-info rounded d-flex search-box bg-light position-relative"
             style={{ maxWidth: "30%" }}>
 
-            <span className="bi bi-search form-control-feedback bg-white rounded h-100"></span>
+            <span className="bi bi-search form-control-feedback bg-white rounded h-100 position-absolute"></span>
             <input
               type="text"
               name="searchInput"
