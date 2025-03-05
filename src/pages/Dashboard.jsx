@@ -98,7 +98,7 @@ export const Dashboard = () => {
                     <div className="col-md-4 d-flex flex-column justify-content-between">
                         <div className="card ">
 
-                            <img src={avatarAPI} alt="user-avatar" className="card-img-top img-fluid w-50 h-50" />
+                            <img src={avatarAPI} alt="user-avatar" className="card-img-top img-fluid rounded-circle w-50" />
                            
                             <div className="card-body text-center">
                                 <h6 className="">{firstName + " " + lastName}</h6>
