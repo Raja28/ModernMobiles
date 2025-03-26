@@ -8,6 +8,7 @@ import {  sendOTP, setLoading, setStatus, setUserData } from "../features/authSl
 import { Loading } from "../components/Loading";
 
 const loginImage = "https://res.cloudinary.com/dooxbo8sg/image/upload/v1728759173/ModernMobiles/Login/e-com_login_cwjsza.jpg"
+const verifyEmailDomainArr = ['yahoo.com', 'gmail.com']
 
 export const LoginForm = () => {
 
@@ -46,6 +47,14 @@ export const LoginForm = () => {
       toast.error("Email Required")
       return
     }
+
+    const splitedEmail = email.split('@')
+
+    if(!verifyEmailDomainArr.includes(splitedEmail[1])){
+      toast.error("Invalid Email")
+      return
+    }
+
     dispatch(setUserData(email))
     dispatch(sendOTP(email));
     setEmail("")
