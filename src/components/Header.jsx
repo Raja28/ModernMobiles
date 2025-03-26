@@ -4,6 +4,7 @@ import { Sidebar } from "../components/Sidebar";
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
 import { avatarAPI, brandLogo } from "../util/api";
 import { useState } from "react";
+import logo2 from '../assets/logo2.png'
 import toast from "react-hot-toast";
 
 const brands = ["Apple", "Pixel", "Samsung", "Nothing", "OnePlus", "Motorola"]
@@ -40,8 +41,8 @@ export default function Header() {
   }
 
   return (
-    <header className="">
-      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom 5">
+    <header className="border" >
+      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom " style={{ height: "60px" }}>
         <div className="container-lg">
 
           <Link
@@ -50,22 +51,24 @@ export default function Header() {
           >
             {/* MyShoppingSite brand logo*/}
             <img
-              src={brandLogo}
-              width={"110rem"}
-              className=""
+              // src={brandLogo}
+              src={logo2}
+              width={"130rem"}
+              style={{ scale: "1.2" }}
+              className="img-fluid"
             />
           </Link>
 
-          <div
-            className="form-group has-search border border-info rounded d-flex search-box bg-light"
-            style={{ maxWidth: "30%" }}>
-
-            <span className="bi bi-search form-control-feedback bg-white rounded h-100"></span>
-            <input
-              type="text"
+          <div class="input-group input-group search-box" style={{ maxWidth: "30%" }}>
+            <span class="input-group-text" id="inputGroup-sizing-sm">
+              <span className="bi bi-search"></span>
+            </span>
+            <input type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm"
               name="searchInput"
               value={searchInput}
-              className="form-control border-0 bg-light bg-white"
               placeholder="Search Brand"
               onChange={(e) => setSearchInput(e.target.value)}
               onKeyDown={(e) => (
@@ -73,6 +76,7 @@ export default function Header() {
               )}
             />
           </div>
+
 
           <button
             className="navbar-toggler"
@@ -98,8 +102,9 @@ export default function Header() {
               >
                 {/* MyShoppingSite */}
                 <img
-                  src={brandLogo}
+                  src={logo2}
                   width={"110rem"}
+                  alt="brand-Logo"
                 />
               </Link>
               <button
@@ -121,7 +126,7 @@ export default function Header() {
                   ) :
                   (<Link
                     to={"/login"}
-                    className="btn btn-primary d-flex gap-2 align-items-center login-btn"
+                    className="d-flex gap-2 align-items-center login-btn  text-decoration-none"
                     style={{ maxHeight: "3rem" }}
                   >
                     <i className="bi bi-person-circle "></i>
@@ -132,24 +137,25 @@ export default function Header() {
                 {/* WistList */}
                 <Link
                   to={"/dashboard/wishlist"}
-                  className=" d-flex flex-column justify-content-center p-1 position-relative text-decoration-none"
+                  className=" d-flex flex-column justify-content-center p- position-relative text-decoration-none"
                   role="button">
                   <span
                     className="bi bi-emoji-heart-eyes-fill mx-auto"
-                   
-                    style={{ fontSize: "1.3rem", color: "black" }}
+
+                    style={{ fontSize: "1.2rem", color: "black" }}
                   ></span>
                   <div className="bounce2">
                     <span
-                      className="position-absolute top-0 mt-1 translate-middle badge rounded-pill bg-danger "
+                      className="position-absolute top-0 mt-1 translate-middle badge rounded-pill bg-danger"
+                      style={{ fontSize: "x-small" }}
                       id="whistlist-count"
                     >
                       {wishlist?.length}
-                     
+
                     </span>
                   </div>
 
-                  <p className="m-0 text-dark" style={{ fontSize: "0.8rem" }}>
+                  <p className="m-0 text-dark fw-semibold" style={{ fontSize: "0.9rem" }}>
                     Wistlist
                   </p>
                 </Link>
@@ -162,20 +168,21 @@ export default function Header() {
                 >
                   <span
                     className="bi bi-cart4 mx-auto "
-                    style={{ fontSize: "1.3rem", color: "black" }}
+                    style={{ fontSize: "1.3rem", color: "black", }}
                   ></span>
 
                   <div className="bounce2">
                     <span
-                      className="position-absolute top-0 translate-middle 
+                      className="position-absolute top-0 mt-1 translate-middle 
                   badge rounded-pill bg-success "
+                      style={{ fontSize: "x-small" }}
                       id="cart-count"
                     >
                       {cartItems ? cartItems.length : 0}
                     </span>
                   </div>
                   {/* </div> */}
-                  <div className="px-3 text-dark" style={{ fontSize: "0.8rem" }}>
+                  <div className="px-2 text-dark fw-semibold" style={{ fontSize: "0.9rem" }}>
                     Cart
                   </div>
                 </Link>
@@ -184,7 +191,7 @@ export default function Header() {
 
               <div className="sidebar_nav">
                 {width <= 625 && userSelectedBrand && <Sidebar />}
-                
+
               </div>
             </div>
           </div>
