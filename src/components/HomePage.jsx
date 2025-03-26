@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { category } from "../datacollection";
+import { category, tripleCards } from "../datacollection";
 import { Slider } from "../components/Slider";
 import ServiceHighlight from "./ServiceHighlight";
 import Footer from "./Footer";
@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { resetAuth } from "../features/authSlice";
 import useOnlineStatus from "../hooks/useConnectionStatus";
 import No_Internet_and_Wifi from "../assets/Logo/No_Internet_and_Wifi.png"
+import '../App.css'
 
 
 export default function HomePage() {
@@ -43,7 +44,7 @@ export default function HomePage() {
         )
           : (
             <>
-              <section className="container " style={{ marginTop: "5.3rem" }}>
+              <section className="container " style={{ marginTop: "5.5rem" }}>
                 <div
                   className="d-flex justify-content-lg-between justify-content-evenly 
                            flex-wrap align-items-center gap-2 "
@@ -51,21 +52,24 @@ export default function HomePage() {
                   {category.map((data) => (
                     <div
                       key={data.id}
-                      className=" rounded d-flex flex-column img-hover-zoom"
+                      className=" rounded d-flex flex-column align-items-center"
                     >
-                      <Link to={`productlist/${data.title}`} className="text-decoration-none">
-                        <div className="" style={{ height: "5rem", width: "5.5rem" }}>
+                      <Link to={`productlist/${data.title}`} className="text-decoration-none  img-hover-zoom ">
+                        <div className="px-1 rounded-circle border d-flex align-items-center brand-logo " style={{
+                          // height: "5.5rem", width: "5.5rem",
+                          backgroundColor: `${data.backgroundColor}`
+                        }}>
                           <img
                             src={data.thumbnail}
-                            className="img img-fluid object-fit-cover border rounded"
+                            className="img-fluid object-fit-contain rounded-pill "
                             style={{ height: "100%", width: "100%" }}
                             alt={data.title}
                           />
                         </div>
-                        <div className="my-0 text-center fw-semibold text-secondary ">
-                          <span className="">{data.title}</span>
-                        </div>
                       </Link>
+                      <div className="my-0 text-center fw-semibold text-secondary ">
+                        <span className=" brand-logo-text">{data.title}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -73,6 +77,20 @@ export default function HomePage() {
 
               <section>
                 <Slider />
+              </section>
+
+              <section>
+                <div className="container d-flex justify-content-between gap-3 my-4 ">
+                  {
+                    tripleCards.map((card) => (
+                      <div key={card}
+                        style={{ maxWidth: '25rem', maxHeight: "10rem" }}
+                      >
+                        <img src={card} alt="Phone Card" className="w-100 h-100 object-fit-contain " />
+                      </div>
+                    ))
+                  }
+                </div>
               </section>
 
               <section>
@@ -89,7 +107,7 @@ export default function HomePage() {
               <section>
 
                 <div className="container d-flex flex-wrap flex-md-nowrap gap-2 my-4">
-                  <div className="w-100  border-4 rounded">
+                  <div className="w-100  border-4 rounded  p-4">
                     <img
 
                       src="https://img.global.news.samsung.com/in/wp-content/uploads/2024/07/Samsung-Neeraj-Chopra.jpg"
@@ -99,7 +117,7 @@ export default function HomePage() {
                       style={{ objectFit: "cover" }}
                     />
                   </div>
-                  <div className="w-100">
+                  <div className="w-100 p-4">
                     <img
                       src="https://i.shgcdn.com/3c5d9cda-0043-4e6b-b877-579f8e5e538c/-/format/auto/-/preview/600x684/-/quality/lighter/"
                       width="100%"
