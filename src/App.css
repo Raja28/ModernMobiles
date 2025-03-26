@@ -3,9 +3,11 @@
 }
 
 .has-search {
-  /* max-width: 25%; */
-  /* max-width: 50%; */
   border: 2px;
+}
+
+.brand {
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
 
 @media screen and (min-width: 480px) {
@@ -27,40 +29,43 @@
   color: #aaa;
 }
 
-.login-btn {
+/* .login-btn {
   height: auto;
+} */
+
+.login-btn {
+  position: relative;
+  padding: .4rem .8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #141414;
+  background: none;
+  border: 1px solid #141414;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
+
+.liquid {
+  background: linear-gradient(#646cff 0 0) no-repeat calc(200% - var(--p, 0%)) 100% / 200% var(--p, 0.2em);
+  transition: 0.3s var(--t, 0s),
+    background-position 0.3s calc(0.3s - var(--t, 0s));
+}
+
+.liquid:hover {
+  --p: 100%;
+  --t: 0.3s;
+  color: #fff;
+  border: 1px solid #646cff;
+}
+
 
 .navbar-left {
   height: 2.8rem;
 }
 
-/* #cart-count {
-  transform: translateX(-100px);
-  background: red;
-} */
 
-/* @keyframes bouncing {
-  100% {
-    top: 0px;
-  }
-  100% {
-    top: 100px;
-  }
-} */
-
-/* #arrow {
-  animation-duration: 2s;
-  animation-name: bouncing;
-  animation-iteration-count: infinite;
-   font-size: 2em; 
-} */
-
-/* @keyframes bounce2 {
-  0%, 20%, 50%, 80%, 100% {transform: translateY(-30);}
-  40% {transform: translateY(-30px);}
-  60% {transform: translateY(-20px);}
-} */
 
 .bounce2 {
   animation: bounce2 1.7s ease infinite;
@@ -85,39 +90,49 @@
   margin-left: 2.9rem;
 }
 
-/* HomePage */
-/* .hovereffect {
-width:150%;
-height:150%;
-float:left;
-overflow:hidden;
-position:relative;
-text-align:center;
-/* cursor:pointer; */
-/* transition: transform .2s; /* Animation */
-/* } */
-
-/* .hovereffect:hover img{
-  transform: scale(1rem)
-}  */
 
 /* [1] The container */
 .img-hover-zoom {
   overflow: hidden;
 }
 
+
+@media screen and (min-width: 769px) {
+  .brand-logo {
+    color: red;
+    width: 80px;
+    height: 80px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .brand-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .brand-logo-text {
+    font-size: .8rem;
+  }
+}
+
 /* [2] Transition property for smooth transformation of images */
 .img-hover-zoom {
   overflow: hidden;
-  /* transition: transform .4s ease-in;
-  transition: transform 250ms; */
+  transition: transform .4s ease;
+
 }
 
 /* [3] Finally, transforming the image when container gets hovered */
-.img-hover-zoom:hover img {
-  transition: transform 250ms ease;
+.img-hover-zoom:hover {
   transform: scale(1.05);
+  filter: drop-shadow(0 0 3em #646cffaa);
 }
+
+/* ////////////////////////\\\\\\\\\\\\\ */
+
+/* ///////////////////////\\\\\\\\\\\\\\ */
 
 /* product-list-page */
 .bg-light-grey {
@@ -410,4 +425,11 @@ body {
 
 }
 
-/* CAROUSEL */
+.footer-icon {
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+
+.footer-icon:hover {
+  transform: scale(1.2);
+}
