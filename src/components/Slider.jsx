@@ -13,25 +13,37 @@ const imgArr = [
   "https://oxygendigitalshop.com/media/cache/1920x0/catalog/category/Web_banner_2-04_1_1706090718.webp",
 ];
 
+const imgArr2 = [
+  "https://res.cloudinary.com/dooxbo8sg/image/upload/v1741975353/ModernMobiles/Banner%20Images/placeholderBanner_1741323019_605_xmjrej.jpg",
+  "https://res.cloudinary.com/dooxbo8sg/image/upload/v1741975328/ModernMobiles/Banner%20Images/placeholderBanner_1740724949_612_iomeae.jpg",
+  "https://res.cloudinary.com/dooxbo8sg/image/upload/v1741975303/ModernMobiles/Banner%20Images/placeholderBanner_1741852480_601_ejojud.jpg",
+  "https://res.cloudinary.com/dooxbo8sg/image/upload/v1741975283/ModernMobiles/Banner%20Images/placeholderBanner_1741852702_619_uhtxwd.jpg",
+  "https://res.cloudinary.com/dooxbo8sg/image/upload/v1741975270/ModernMobiles/Banner%20Images/placeholderBanner_1741855501_616_nsgif0.jpg",
+  "https://res.cloudinary.com/dooxbo8sg/image/upload/v1741975254/ModernMobiles/Banner%20Images/placeholderBanner_1741265454_547_gjery1.jpg",
+  "https://res.cloudinary.com/dooxbo8sg/image/upload/v1741975686/ModernMobiles/Banner%20Images/placeholderBanner_1737962286_591_nafqln.jpg",
+  "https://res.cloudinary.com/dooxbo8sg/image/upload/v1741975699/ModernMobiles/Banner%20Images/placeholderBanner_1736762155_584_ruv8oo.jpg",
+]
+
 export const Slider = () => {
   return (
-    <div className="mt-4 container container slider-wrapper">
+    <div className="mt-4  slider-wrapper container">
       <Carousel
         autoPlay={true}
         showThumbs={false}
         infiniteLoop={true}
         dynamicHeight={true}
-        interval={2000}
+        interval={3000}
         showArrows={true}
-        className="border border-1"
+        className="border border-danger"
+      
       >
-        {imgArr.map((img) => (
-          <div key={img} style={{ height: "80%" }}>
+        {imgArr2.map((img) => (
+          <div key={img} style={{ height: "100%" }}>
             <img
               src={img}
               key={img}
               alt="img-banner"
-              style={{ height: "90%", width: "100%", objectFit: "cover" }}
+              style={{ height: "100%", width: "100%", objectFit: "cover" }}
             />
           </div>
         ))}
