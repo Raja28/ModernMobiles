@@ -49,7 +49,7 @@ export const checkout = createAsyncThunk("posts/checkout", async ({ total, user,
         const receipt = orderResponse.data.data.receipt
         // open razorpay sdk
         const options = {
-
+            key: import.meta.env.VITE_RAZORPAY_KEY,
             curreny: orderResponse.data.data.curreny,
             amount: orderResponse.data.data.amount,
             order_id: orderResponse.data.data.id,
@@ -58,7 +58,8 @@ export const checkout = createAsyncThunk("posts/checkout", async ({ total, user,
             image: brandImage,
             prefill: {
                 name: `${user?.firstName} ${user?.lastName}`,
-                email: user?.email
+                email: user?.email,
+                contact: "9181716151" 
             },
 
             handler: function (response) {
