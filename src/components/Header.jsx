@@ -59,12 +59,12 @@ export default function Header() {
             />
           </Link>
 
-          <div class="input-group input-group search-box" style={{ maxWidth: "30%" }}>
-            <span class="input-group-text" id="inputGroup-sizing-sm">
+          <div className="input-group input-group search-box" style={{ maxWidth: "30%" }}>
+            <span className="input-group-text" id="inputGroup-sizing-sm">
               <span className="bi bi-search"></span>
             </span>
             <input type="text"
-              class="form-control"
+              className="form-control"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-sm"
               name="searchInput"
