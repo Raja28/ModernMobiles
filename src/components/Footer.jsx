@@ -41,7 +41,7 @@ export default function Footer() {
           </a>
           <a href={links.gitHub} target='_blank'
           className='footer-icon text-decoration-none text-light'>
-            <i class="bi bi-github footer-icon" style={{ fontSize: "1rem" }}></i>
+            <i className="bi bi-github footer-icon" style={{ fontSize: "1rem" }}></i>
           </a>
           <a href={links.portfolio} target='_blank'
           className='footer-icon text-decoration-none text-light'>
