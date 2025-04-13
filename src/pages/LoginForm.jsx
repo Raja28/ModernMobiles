@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import toast from "react-hot-toast";
-import {  sendOTP, setLoading, setStatus, setUserData } from "../features/authSlice";
+import { loginUser, sendOTP, setLoading, setStatus, setUserData } from "../features/authSlice";
 import { Loading } from "../components/Loading";
 
 const loginImage = "https://res.cloudinary.com/dooxbo8sg/image/upload/v1728759173/ModernMobiles/Login/e-com_login_cwjsza.jpg"
@@ -13,14 +13,14 @@ const verifyEmailDomainArr = ['yahoo.com', 'gmail.com']
 export const LoginForm = () => {
 
   const [email, setEmail] = useState("");
-  const { loading, status,  } = useSelector(state => state.auth)
+  const { loading, status, } = useSelector(state => state.auth)
 
 
   const navigate = useNavigate()
-  
-  
+
+
   useEffect(() => {
-    
+
     dispatch(setStatus("idle"))
   }, [])
 
@@ -41,8 +41,10 @@ export const LoginForm = () => {
   }
 
   function onSubmitHandler(e) {
+    console.log("User login");
+    
     e.preventDefault();
- 
+
     if (!email) {
       toast.error("Email Required")
       return
@@ -50,7 +52,7 @@ export const LoginForm = () => {
 
     const splitedEmail = email.split('@')
 
-    if(!verifyEmailDomainArr.includes(splitedEmail[1])){
+    if (!verifyEmailDomainArr.includes(splitedEmail[1])) {
       toast.error("Invalid Email")
       return
     }
@@ -58,6 +60,16 @@ export const LoginForm = () => {
     dispatch(setUserData(email))
     dispatch(sendOTP(email));
     setEmail("")
+  }
+
+  function guestLoginHandler(e) {
+    e.preventDefault();
+    console.log("Guest lohin");
+    
+    const email = 'email@guest.com'
+
+    dispatch(loginUser({ email }));
+
   }
 
   if (loading === true && status == "processing") {
@@ -95,6 +107,12 @@ export const LoginForm = () => {
                 className="form-control"
               />
               <button className="btn  mt-4 w-75 bg-warning fw-semibold shadow">Login</button>
+              <button
+                className="btn  mt-4 w-75 bg-warning fw-semibold shadow"
+                onClick={(e) => guestLoginHandler(e)}
+              >
+                Guest Login
+              </button>
               <div className="my-1 text-secondary">
                 <Link to={"/signup"} className="text-decoration-none text-secondary">Signup</Link>
                 <div className="bg-dark" style={{ width: "3rem", height: "0.01rem" }}></div>
