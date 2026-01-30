@@ -10,71 +10,99 @@
 }
 
 
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Container for horizontal scrolling */
+.category-scroll-container {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding-left: 10px; /* Peek-a-boo effect for first item on mobile */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.category-item {
+  scroll-snap-align: start;
+  flex: 0 0 auto; /* Prevents shrinking */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/* The Circle Icon */
+.category-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px; /* Modern "Squircle" shape instead of perfect circle */
+  transition: all 0.3s ease;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media (min-width: 992px) {
+  .category-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%; /* Classic circle for desktop */
   }
-  a:hover {
-    color: #747bff;
+}
+
+.category-img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Interactive Hover States */
+.category-item:hover .category-circle {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1) !important;
+  border-color: var(--bs-primary) !important; /* Optional: highlight border on hover */
+}
+
+.category-item:hover .category-img {
+  transform: scale(1.1);
+}
+
+.category-label {
+  font-size: 0.85rem;
+  letter-spacing: -0.2px;
+}
+
+/* Mobile-Specific "Peek" UI */
+@media (max-width: 576px) {
+  .category-scroll-container {
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* Hide Scrollbar helper */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+
+/* XXXXX */
+
+.service-card {
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.icon-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px; /* Squircle shape */
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .icon-box {
+  border-radius: 50%; /* Shape shifts on hover for delight */
+  filter: brightness(0.95);
+}
+
+/* Responsive adjustment for small mobile screens */
+@media (max-width: 400px) {
+  .service-card h6 {
+    font-size: 0.85rem;
   }
-} */
+  .service-card p {
+    font-size: 0.75rem;
+  }
+}
