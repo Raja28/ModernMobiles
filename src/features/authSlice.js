@@ -3,18 +3,17 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { LOGIN_API, SENDOTP_API, SIGNUP_API } from '../util/api'
 import toast from "react-hot-toast";
 import axios from "axios";
+import { setUser } from "./userSlice";
 
 
 
 export const sendOTP = createAsyncThunk("posts/sendOTP", async (email, { rejectWithValue }) => {
-    let toastId = toast.loading("Sending OTP")
+    
     try {
-        const response = await axios.post(SENDOTP_API, { email });
-        toast.dismiss(toastId)
+        await axios.post(SENDOTP_API, { email });
         toast.success("OTP Sent")
 
     } catch (error) {
-        toast.dismiss(toastId)
         toast.error("Unable to Send OTP, Try again")
         console.log(error);
         return rejectWithValue(error.response.data.message)
@@ -25,7 +24,7 @@ export const sendOTP = createAsyncThunk("posts/sendOTP", async (email, { rejectW
 export const signupNewUser = createAsyncThunk("posts/signup", async (formData, { rejectWithValue }) => {
     let toastId = toast.loading("Saving...")
     try {
-        const response = await axios.post(SIGNUP_API, formData)
+        await axios.post(SIGNUP_API, formData)
         toast.dismiss(toastId)
         toast.success("Sigup Successfull")
 
@@ -39,20 +38,19 @@ export const signupNewUser = createAsyncThunk("posts/signup", async (formData, {
     toast.dismiss(toastId)
 })
 
-export const loginUser = createAsyncThunk("posts/loginUser", async (formData, { rejectWithValue }) => {
+export const loginUser = createAsyncThunk("posts/loginUser", async (formData, {dispatch, rejectWithValue }) => {
 
-    let toastId = toast.loading("Verifying user")
     try {
         const response = await axios.post(LOGIN_API, formData,)
-        toast.dismiss(toastId)
-        toast.success("Login Successful")
         localStorage.setItem("token", JSON.stringify(response.data.token))
-
+        const user = response.data.user
+        const token = response.data.token
+        const wishlist = response.data.user.wishlist
+        dispatch(setUser({ user, token, wishlist }))
         return response.data.user
 
     } catch (error) {
         toast.error(error.response.data.message)
-        toast.dismiss(toastId)
         return rejectWithValue(error.response.data.message)
     }
 })
@@ -61,7 +59,7 @@ const initialState = {
     userData: {},
     loading: false,
     status: "idle",
-    token: null
+    token: localStorage.getItem("token") ? localStorage.getItem("token") : null
 }
 
 export const authSlice = createSlice({
@@ -90,12 +88,12 @@ export const authSlice = createSlice({
 
     extraReducers: (builder) => {
 
-        builder.addCase(sendOTP.pending, (state, action) => {
+        builder.addCase(sendOTP.pending, (state) => {
             state.status = "processing";
             state.loading = true
 
         });
-        builder.addCase(sendOTP.fulfilled, (state, { payload }) => {
+        builder.addCase(sendOTP.fulfilled, (state) => {
             state.status = "success";
             state.loading = false;
 
@@ -141,7 +139,7 @@ export const authSlice = createSlice({
             localStorage.setItem("total", JSON.stringify(total))
 
         });
-        builder.addCase(loginUser.rejected, (state, { payload }) => {
+        builder.addCase(loginUser.rejected, (state) => {
             state.status = "error";
             state.loading = false;
 
