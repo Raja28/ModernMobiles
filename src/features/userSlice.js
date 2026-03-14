@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, isRejectedWithValue } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from "react-hot-toast";
 import {
@@ -12,7 +12,7 @@ import {
 
 
 
-export const addProductToWhistlist = createAsyncThunk("posts/addProductToWhistlist", async (data, { rejectWithValue }) => {
+export const addProductToWhistlist = createAsyncThunk("posts/addProductToWhistlist", async (data,) => {
   try {
     const tokenPayload = {
       headers: {
@@ -33,13 +33,9 @@ export const addProductToWhistlist = createAsyncThunk("posts/addProductToWhistli
   }
 })
 
-export const removeProductFromWishlist = createAsyncThunk("posts/removeProductFromWishlist", async (data, { rejectWithValue }) => {
+export const removeProductFromWishlist = createAsyncThunk("posts/removeProductFromWishlist", async (data,) => {
   try {
-    const tokenPayload = {
-      headers: {
-        "Authorization": `Bearer ${JSON.parse(localStorage.getItem("token"))}`
-      }
-    }
+
     const response = await axios.post(REMOVE_WHISHLIST, data);
 
     if (response?.data?.success) {
@@ -53,14 +49,10 @@ export const removeProductFromWishlist = createAsyncThunk("posts/removeProductFr
   }
 })
 
-export const updateUserData = createAsyncThunk("posts/updateUserData", async (formData, { rejectWithValue }) => {
+export const updateUserData = createAsyncThunk("posts/updateUserData", async (formData,) => {
   const toastId = toast.loading("Please wait...")
   try {
-    const tokenPayload = {
-      headers: {
-        "Authorization": `Bearer ${JSON.parse(localStorage.getItem("token"))}`
-      }
-    }
+
     const token = JSON.parse(localStorage.getItem("token"))
     const result = await axios.post(UPDATE_USER_PROFILE_DATA, formData, {
       headers: {
@@ -286,8 +278,8 @@ const userSlice = createSlice({
       state.token = payload
     },
     setUser: (state, { payload }) => {
-
-      state.user = { ...payload }
+  
+      state.user = payload.user || { ...payload }
       state.wishlist = [...payload.wishlist]
       state.token = payload?.token
     },
@@ -337,14 +329,14 @@ const userSlice = createSlice({
       state.status = "error"
     });
 
-    builder.addCase(updateUserData.pending, (state, { payload }) => {
+    builder.addCase(updateUserData.pending, (state) => {
       state.status = "loading"
     });
     builder.addCase(updateUserData.fulfilled, (state, { payload }) => {
       state.user = payload
       state.status = "success"
     });
-    builder.addCase(updateUserData.rejected, (state, { payload }) => {
+    builder.addCase(updateUserData.rejected, (state) => {
       state.status = "error"
     });
 
@@ -407,7 +399,7 @@ const userSlice = createSlice({
       state.user.cart = [...payload]
       localStorage.setItem("cart", JSON.stringify(payload))
     });
-    builder.addCase(removeFromCart.rejected, (state) => {
+    builder.addCase(removeFromCart.rejected, (state, { payload }) => {
       state.status = "error"
       state.error = payload
     });

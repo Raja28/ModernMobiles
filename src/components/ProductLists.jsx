@@ -1,30 +1,23 @@
-import React from "react";
+
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { FcLikePlaceholder } from "react-icons/fc";
 import { GoHeartFill } from "react-icons/go";
 import { FaRegHeart } from "react-icons/fa";
 import { FaShoppingBag } from "react-icons/fa";
 import { FaStar, FaIndianRupeeSign } from "react-icons/fa6";
 import { TiTickOutline } from "react-icons/ti";
-import { iphone } from "../datacollection";
 import { Sidebar } from "./Sidebar";
 import { Link } from "react-router-dom";
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData, fetchProductById, setProductDetail, setProducts, setStatus } from "../features/productSlice";
-import { NoProductFound } from "../pages/NoProductFound";
+import { fetchData, setProducts } from "../features/productSlice";
 import { Loading } from "./Loading";
 import Footer from "./Footer";
-import { Error } from "./Error";
-import { addProductToWhistlist, removeProductFromWishlist } from "../features/userSlice";
-import toast from "react-hot-toast";
-import { IoMdHeart } from "react-icons/io";
 import { handlerWishlist, handlerCart } from "../util/operations";
 import { setCart } from "../features/cartSlice";
 
-let brands = ["Apple", "Pixel", "Samsung", "Nothing", "OnePlus", "Motorola"]
 
 const sideBarEnableWith = 625
 export default function ProductListPage() {
@@ -34,7 +27,7 @@ export default function ProductListPage() {
   const { status, products } = useSelector(state => state.products)
   const { wishlist, user } = useSelector(state => state.user)
 
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const dispatch = useDispatch()
   const navigate = useNavigate()

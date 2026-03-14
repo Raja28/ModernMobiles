@@ -1,16 +1,19 @@
-
-// This will prevent non-authenticated users from accessing this route
-import { useSelector } from "react-redux"
+import PropTypes from 'prop-types';
 import { Navigate } from "react-router-dom"
 
 function PrivateRoute({ children }) {
-    const { token } = useSelector((state) => state.user)
 
-    if (token !== null) {
+    const token = localStorage.getItem("token")
+
+    if (token !== null && token !== undefined) {
         return children
     } else {
         return <Navigate to="/login" />
     }
 }
+
+PrivateRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default PrivateRoute

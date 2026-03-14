@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
@@ -6,9 +6,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import './index.css'
 import { PersistGate } from 'redux-persist/integration/react'
 import persistStore from "redux-persist/es/persistStore";
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import './App.css'
-import App from "./App";
+
 
 import { SignUp } from "./pages/Signup";
 import { LoginForm } from "./pages/LoginForm";
@@ -22,7 +22,6 @@ import { Dashboard } from "./pages/Dashboard";
 import { PageNotFound } from "./pages/PageNotFound";
 import { NoProductFound } from "./pages/NoProductFound";
 import { Error } from "./components/Error";
-import { AddressForm } from "./pages/AddOrEditAddress";
 import { ManageAddress } from "./pages/ManageAddress";
 import { OrderHistory } from "./pages/OrderHistory";
 import OpenRoute from "./hooks/OpenRoutes";
