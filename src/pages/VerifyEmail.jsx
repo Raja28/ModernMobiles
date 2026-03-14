@@ -1,41 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import OtpInput from 'react-otp-input';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import {  useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaArrowLeftLong } from "react-icons/fa6";
-import { loginUser, resetAuth, sendOTP, setLoading, setStatus, signupNewUser } from '../features/authSlice';
+import { loginUser, resetAuth, sendOTP, setStatus, signupNewUser } from '../features/authSlice';
 import { Loading } from '../components/Loading';
 import { setUser } from '../features/userSlice';
 import { PageNotFound } from './PageNotFound';
 
 
 export const VerifyEmail = () => {
-
-
     const isSignup = "signup";
     const isLogin = "login";
-
-
     const [otp, setOtp] = useState('');
     const { userData, loading, status,  } = useSelector(state => state.auth)
-
-    
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { actionParam } = useParams()
-
-
-
+    
     useEffect(() => {
         dispatch(setStatus("idle"))
     }, [])
 
     useEffect(() => {
         if (loading == false && status === "success") {
-            if (actionParam === isSignup && !userData) {
+            if (!localStorage.getItem("token") && actionParam === isSignup && !userData) {
                 dispatch(resetAuth())
                 navigate("/login")
             } else {
@@ -43,7 +33,7 @@ export const VerifyEmail = () => {
                 if (localStorage.getItem("token")) {
                     
                     dispatch(setUser(userData))
-                    navigate("/dashboard")
+                    navigate("/dashboard/my-profile")
                     dispatch(resetAuth())
                 }
             }
@@ -51,6 +41,7 @@ export const VerifyEmail = () => {
 
             if (loading == false && status === "error") {
                 dispatch(resetAuth())
+                console.log("back to login");
                 navigate(-1)
             }
         }
@@ -71,9 +62,7 @@ export const VerifyEmail = () => {
 
         e.preventDefault();
         if (isSignup === actionParam) {
-            const { firstName, lastName, email, contact } = userData
-
-
+    
             let clonedObj = Object.assign({}, userData)
             clonedObj.otp = otp
 
@@ -99,8 +88,6 @@ export const VerifyEmail = () => {
         dispatch(resetAuth()) 
         navigate(-1)
     }
-
-
 
     return (
         <>
