@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import { avatarAPI, logoutIcon } from "../util/api"
+import { avatarAPI } from "../util/api"
 import { useEffect, useState } from "react"
-import { MdOutlineEditNote } from "react-icons/md";
+
 import { MdOutlineLogout } from "react-icons/md";
 
 import { FaCartShopping } from "react-icons/fa6";
@@ -13,6 +13,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { resetUser, updateUserData } from "../features/userSlice"
 import toast from "react-hot-toast"
 import { resetCart, setCart } from "../features/cartSlice"
+import { resetAuth } from "../features/authSlice"
 
 const navCards = [
     {
@@ -75,16 +76,13 @@ export const Dashboard = () => {
         setEditUserData(prev => !prev)
     }
 
-    function handlerAddAddress(e) {
-        e.preventDefault()
-        console.log("naviahting to add address");
-    }
 
     function handlerLogout() {
+        navigate("/")
         dispatch(resetCart())
         dispatch(resetUser())
+        dispatch(resetAuth())
         toast.success("Logout Successfully")
-        navigate("/")
 
     }
 
