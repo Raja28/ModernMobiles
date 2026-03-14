@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import toast from "react-hot-toast";
 import { loginUser, sendOTP, setStatus, setUserData } from "../features/authSlice";
-import { Loading } from "../components/Loading";
+// import { Loading } from "../components/Loading";
 
 const loginImage = "https://res.cloudinary.com/dooxbo8sg/image/upload/v1728759173/ModernMobiles/Login/e-com_login_cwjsza.jpg"
 const verifyEmailDomainArr = ['yahoo.com', 'gmail.com']
@@ -17,16 +17,22 @@ export const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isTokenAvailable = localStorage.getItem("token");
-  console.log(userData?._id, status, loading);
+
   useEffect(() => {
     dispatch(setStatus("idle"));
   }, [dispatch]);
 
   useEffect(() => {
-    if (userData?._id && status === "success" && !loading) {
+    if (userData && status === "success" && !loading) {
       navigate("/verify-email/login");
     }
   }, [status, loading, navigate]);
+
+  useEffect(() => {
+    if (isTokenAvailable) {
+      navigate("/")
+    }
+  }, [isTokenAvailable])
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -47,9 +53,9 @@ export const LoginForm = () => {
     dispatch(loginUser({ email: guestEmail }));
   };
 
-  if (loading && status === "processing") return <Loading />;
+  // if (loading && status === "processing") return <Loading />;
 
-  if(isTokenAvailable)  navigate("/");
+  // if(isTokenAvailable)  navigate("/");
 
   return (
     <div className="bg-light min-vh-100 d-flex flex-column">
@@ -94,11 +100,12 @@ export const LoginForm = () => {
                 </div>
               </div>
 
-              <button type="submit" className="btn btn-primary w-100 py-2 fw-bold rounded-pill mb-3 shadow-sm">
+              <button disabled={loading} type="submit" className="btn btn-primary w-100 py-2 fw-bold rounded-pill mb-3 shadow-sm">
                 Get OTP
               </button>
 
               <button 
+                disabled={loading}
                 type="button"
                 onClick={guestLoginHandler} 
                 className="btn btn-outline-secondary w-100 py-2 fw-bold rounded-pill mb-4"
@@ -109,7 +116,7 @@ export const LoginForm = () => {
 
             <div className="text-center mt-2">
               <span className="text-muted small">New here? </span>
-              <Link to="/signup" className="text-primary text-decoration-none small fw-bold">
+              <Link to={loading ? "#" : "/signup"} className="text-primary text-decoration-none small fw-bold">
                 Create an Account
               </Link>
             </div>
